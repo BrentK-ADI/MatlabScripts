@@ -1,42 +1,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Copyright (C) 2023 Analog Devices, Inc.
+% Copyright © 2023 by Analog Devices, Inc.  All rights reserved.
 %
-% All rights reserved.
+% This software is proprietary to Analog Devices, Inc. and its licensors.
 %
-% Redistribution and use in source and binary forms, with or without
-% modification, are permitted provided that the following conditions are met:
-%  - Redistributions of source code must retain the above copyright
-%    notice, this list of conditions and the following disclaimer.
-%  - Redistributions in binary form must reproduce the above copyright
-%    notice, this list of conditions and the following disclaimer in
-%    the documentation and/or other materials provided with the
-%    distribution.
-%  - Neither the name of Analog Devices, Inc. nor the names of its
-%    contributors may be used to endorse or promote products derived
-%    from this software without specific prior written permission.
-%  - The use of this software may or may not infringe the patent rights
-%    of one or more patent holders.  This license does not release you
-%    from the requirement that you obtain separate licenses from these
-%    patent holders to use this software.
-%  - Use of the software either in source or binary form, must be run
-%    on or directly connected to an Analog Devices Inc. component.
+% This software is provided on an “as is” basis without any representations,
+% warranties, guarantees or liability of any kind.
 %
-% THIS SOFTWARE IS PROVIDED BY ANALOG DEVICES "AS IS" AND ANY EXPRESS OR
-% IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, NON-INFRINGEMENT,
-% MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-% IN NO EVENT SHALL ANALOG DEVICES BE LIABLE FOR ANY DIRECT, INDIRECT,
-% INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-% LIMITED TO, INTELLECTUAL PROPERTY RIGHTS, PROCUREMENT OF SUBSTITUTE GOODS OR
-% SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-% CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-% OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-% OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+% Use of the software is subject to the terms and conditions of the
+% Clear BSD License ( https://spdx.org/licenses/BSD-3-Clause-Clear.html ).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function ltc2688Example()
     %find the DC590 or DC2026 connection
     ctrl = linduinoSPI();
-    
+
     %Didn't find anything, return
     if ~ctrl.isConnected()
         fprintf("Serial connection not found\n");
@@ -58,7 +35,7 @@ function ltc2688Example()
 
         % Ch0 is a square wave
         if(mod(i,2) == 0)
-            valCh0 = 0xFFFF;            
+            valCh0 = 0xFFFF;
         else
             valCh0 = 0;
         end
@@ -73,7 +50,7 @@ function ltc2688Example()
         chip.setChannelCode(0, valCh0);
         chip.setChannelCode(1, valCh1);
         chip.updateAll();
-        
+
         pause(0.01);
     end
 
